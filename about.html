@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于本站 - 生辰纪念网站</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+    <style>
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .about-section {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+
+        .about-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-title {
+            font-size: 2.2rem;
+            color: #1a73e8;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            color: #34495e;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #1a73e8, #34a853);
+            top: 0;
+            border-radius: 1.5px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 0;
+            padding-right: 20px;
+            margin-left: 50%;
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            position: relative;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #1a73e8;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -40px;
+            box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -40px;
+            right: auto;
+        }
+
+        .timeline-content:hover::before {
+            background: #34a853;
+            box-shadow: 0 0 0 6px rgba(52, 168, 83, 0.2);
+        }
+
+        .timeline-date {
+            color: #1a73e8;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(26, 115, 232, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover .timeline-date {
+            background: rgba(52, 168, 83, 0.1);
+            color: #34a853;
+        }
+
+        .timeline-title {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                margin-left: 0;
+            }
+            
+            .timeline-content::before {
+                right: auto;
+                left: -30px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">生辰纪念</div>
+                <button class="hamburger-menu" aria-label="导航菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="museum.html">时光博物馆</a></li>
+                    <li><a href="exhibition.html">惊喜展览馆</a></li>
+                    <li><a href="members.html">参与人员</a></li>
+                    <li><a href="about.html">关于本站</a></li>
+                </ul>
+                <div class="user-section">
+                    <div id="login-status" class="login-status">
+                        <a href="login.html" class="login-btn">登录</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-container">
+            <section class="about-section">
+                <h1 class="about-title">网站背景</h1>
+                <div class="about-content">
+                    <p>本网站是为开发者的恋人柳儿开发的一个独特的生日礼物，记录了我们的点点滴滴，也记录了好友们的祝福</p>
+                    <p>我们的每一个瞬间都值得被记住，每一段回忆都应该被珍惜。通过一次次的改进，一次次的修改，一点点的美化，只是为了给她一个惊喜</p>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2 class="about-title">发展历程</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年12月5日</div>
+                            <h3 class="timeline-title">网站计划初步形成</h3>
+                            <p class="timeline-description">本网站正式进入设计阶段，从纸上的一笔笔设计到线上的一行行代码，用了数天的时间</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年12月7日</div>
+                            <h3 class="timeline-title">第一版正式上线</h3>
+                            <p class="timeline-description">第一版网页制作完成，上线开始进行测试</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025年2月1日</div>
+                            <h3 class="timeline-title">第一版废止停用，开始制作第二版</h3>
+                            <p class="timeline-description">因第一版维护难等问题，最终宣布停止使用，开始制作第二版</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025年2月8日</div>
+                            <h3 class="timeline-title">第三版正式开始制作</h3>
+                            <p class="timeline-description">第二版网页因各种问题难以修复，最终被废止，第三版开始制作</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025年3月7日</div>
+                            <h3 class="timeline-title">第三版因意外废止，第四版开始制作</h3>
+                            <p class="timeline-description">第三版网页于3月7日制作完成，测试途中误删样式文件，导致网站崩溃，未及时跟进备份，无法恢复，无奈开启第四代</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025年3月15日</div>
+                            <h3 class="timeline-title">第四版正式开始beta测试</h3>
+                            <p class="timeline-description">第四版网页制作完成，上线开始进行测试</p>
+                        </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- <footer>
+        <div class="footer-content">
+            <!-- 移除版权信息 -->
+        </div>
+    </footer> -->
+
+    <!-- 错误提示弹窗 -->
+    <div id="error-toast" class="error-toast hidden">
+        <span class="error-icon">⚠️</span>
+        <span class="error-message"></span>
+    </div>
+
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/nav.js"></script>
+</body>
+</html>

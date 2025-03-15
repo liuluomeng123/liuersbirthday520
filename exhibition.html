@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>惊喜展览馆 - 生辰纪念网站</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+    <style>
+        .exhibition-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.8rem;
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 8px;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn.active {
+            background-color: #1a73e8;
+            color: white;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+        }
+
+        .media-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #1a73e8;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            border-radius: 2px;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .media-item {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform: translateY(0);
+        }
+
+        .media-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .media-content {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .media-content video,
+        .media-content audio {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        /* 音频播放器样式优化 */
+        .media-content audio {
+            border-radius: 12px;
+            background: linear-gradient(145deg, #f0f4f8, #e6f0ff);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        /* 音频卡片特殊样式 */
+        [data-content="audio"] .media-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        [data-content="audio"] .media-item {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+        }
+        
+        [data-content="audio"] .media-item:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        [data-content="audio"] .media-content {
+            height: auto;
+            min-height: 80px;
+            max-height: 140px;
+            background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
+            border-radius: 20px 20px 0 0;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        [data-content="audio"] .media-content audio {
+            width: 90%;
+            margin: 0 auto;
+            border-radius: 50px;
+            background: linear-gradient(145deg, #ffffff, #f0f7ff);
+            box-shadow: 0 8px 20px rgba(26, 115, 232, 0.15);
+            transition: all 0.3s ease;
+            height: auto;
+            min-height: 54px;
+            padding: 8px;
+        }
+        
+        [data-content="audio"] .media-content audio:hover {
+            box-shadow: 0 12px 25px rgba(26, 115, 232, 0.25);
+            transform: scale(1.02);
+        }
+        
+        [data-content="audio"] .media-info {
+            padding: 1.2rem;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        [data-content="audio"] .media-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1a73e8;
+            position: relative;
+        }
+        
+        [data-content="audio"] .media-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #5f6368;
+        }
+        
+        [data-content="audio"] .media-info {
+            border-top: 1px solid rgba(26, 115, 232, 0.1);
+            background: white;
+        }
+        
+        [data-content="audio"] .media-title {
+            display: flex;
+            align-items: center;
+        }
+        
+        [data-content="audio"] .media-title::before {
+            content: '🎵';
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .media-info {
+            padding: 1.5rem;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), #fff);
+            backdrop-filter: blur(10px);
+        }
+
+        .media-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .media-item:hover .media-title {
+            color: #34a853;
+        }
+
+        .media-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">生辰纪念</div>
+                <button class="hamburger-menu" aria-label="导航菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="museum.html">时光博物馆</a></li>
+                    <li><a href="exhibition.html">惊喜展览馆</a></li>
+                    <li><a href="members.html">参与人员</a></li>
+                    <li><a href="about.html">关于本站</a></li>
+                </ul>
+                <div class="user-section">
+                    <div id="login-status" class="login-status">
+                        <a href="login.html" class="login-btn">登录</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="exhibition-container">
+            <div class="content-nav">
+                <button class="nav-btn active" data-type="video">惊喜视频</button>
+                <button class="nav-btn" data-type="audio">音频珍藏</button>
+            </div>
+
+            <section class="media-section" data-content="video">
+                <h2 class="section-title">惊喜视频</h2>
+                <div class="media-grid">
+                    <div class="media-item">
+                        <div class="media-content">
+                            <video controls>
+                                <source src="./assets/videos/2025年3月15日-允的柳儿生辰视频-二改-无字幕(1).mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <div class="media-info">
+                            <h3 class="media-title">来自允的祝福</h3>
+                            <p class="media-description">一条来自允允对蒜苗的爱💞</p>
+                        </div>
+                    </div>
+                    <!-- 更多视频将在这里添加 -->
+                </div>
+            </section>
+
+            <section class="media-section" data-content="audio" style="display: none;">
+                <h2 class="section-title">音频珍藏</h2>
+                <div class="media-grid">
+                    <div class="media-item">
+                        <div class="media-content">
+                            <audio controls>
+                                <source src="./assets/audios/测试音频.mp3" type="audio/mpeg">
+                                您的浏览器不支持音频播放。
+                            </audio>
+                        </div>
+                        <div class="media-info">
+                            <h3 class="media-title">测试用音频</h3>
+                            <p class="media-description">由于还没有合适的音频放在这里，暂时先用一首下载的歌曲代替进行线上测试，在真正使用时需要替换为真实的庆生音频</p>
+                        </div>
+                    </div>
+                    <!-- 更多音频将在这里添加 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- <footer>
+        <div class="footer-content">
+            <!-- 移除版权信息 -->
+        </div>
+    </footer> -->
+
+    <!-- 错误提示弹窗 -->
+    <div id="error-toast" class="error-toast hidden">
+        <span class="error-icon">⚠️</span>
+        <span class="error-message"></span>
+    </div>
+
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/nav.js"></script>
+    <script>
+        // 内容切换功能
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // 更新按钮状态
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                // 更新内容显示
+                const type = button.dataset.type;
+                document.querySelectorAll('.media-section').forEach(section => {
+                    if (section.dataset.content === type) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生辰纪念网站</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo text-gradient">生辰纪念</div>
+                <button class="hamburger-menu" aria-label="导航菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="button-hover">首页</a></li>
+                    <li><a href="museum.html" class="button-hover">时光博物馆</a></li>
+                    <li><a href="exhibition.html" class="button-hover">惊喜展览馆</a></li>
+                    <li><a href="members.html" class="button-hover">参与人员</a></li>
+                    <li><a href="about.html" class="button-hover">关于本站</a></li>
+                </ul>
+                <div class="user-section">
+                    <div id="login-status" class="login-status">
+                        <a href="login.html" class="login-btn button-hover">登录</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="countdown-section card-hover">
+            <h1 class="text-gradient">距离下一个生日还有</h1>
+            <div id="countdown" class="countdown">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="label">天</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="label">时</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="label">分</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="label">秒</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="decorative-widgets scroll-reveal">
+            <!-- 装饰性小组件将在这里添加 -->
+        </div>
+    </main>
+
+    <!-- <footer>
+        <div class="footer-content">
+            <!-- 移除版权信息 -->
+        </div>
+    </footer> -->
+
+    <!-- 错误提示弹窗 -->
+    <div id="error-toast" class="error-toast hidden">
+        <span class="error-icon">⚠️</span>
+        <span class="error-message">访问出错：您的账号存在异常，请重新登录</span>
+    </div>
+
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/countdown.js"></script>
+    <script src="./assets/js/nav.js"></script>
+</body>
+</html>
