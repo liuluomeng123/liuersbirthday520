@@ -1,0 +1,117 @@
+.modal-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    z-index: 3100;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.fullscreen-controls {
+    position: relative;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 3100;
+    width: fit-content;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+#zoomScale {
+    color: #fff;
+    min-width: 60px;
+    text-align: center;
+}
+
+.control-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#imageWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3050;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+#imageCounter {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 16px;
+    border-radius: 4px;
+    z-index: 3100;
+}
+
+.zoom-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    z-index: 3200;
+}
+
+.zoom-option {
+    color: #fff;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.zoom-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}

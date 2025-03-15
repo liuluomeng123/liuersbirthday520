@@ -1,0 +1,127 @@
+/* 全局动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 页面元素动画类 */
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.slide-up {
+    animation: slideInUp 0.8s ease-out;
+}
+
+/* 导航栏动画效果 */
+.nav-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.nav-links li {
+    opacity: 0;
+    animation: slideInUp 0.5s ease-out forwards;
+}
+
+.nav-links li:nth-child(1) { animation-delay: 0.1s; }
+.nav-links li:nth-child(2) { animation-delay: 0.2s; }
+.nav-links li:nth-child(3) { animation-delay: 0.3s; }
+.nav-links li:nth-child(4) { animation-delay: 0.4s; }
+.nav-links li:nth-child(5) { animation-delay: 0.5s; }
+
+/* 倒计时动画效果 */
+.countdown-section {
+    animation: fadeIn 1s ease-out;
+}
+
+.countdown-item span {
+    animation: pulse 2s infinite;
+}
+
+/* 页面切换动画 */
+.page-transition {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 按钮悬停效果 */
+.button-hover {
+    transition: all 0.3s ease;
+}
+
+.button-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 加载动画 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1a73e8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 滚动显示动画 */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 图片悬停效果 */
+.image-hover {
+    transition: all 0.3s ease;
+}
+
+.image-hover:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* 文本渐变效果 */
+.text-gradient {
+    background: linear-gradient(45deg, #1a73e8, #34a853);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1s ease-out;
+}
