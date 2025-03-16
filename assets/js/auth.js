@@ -220,7 +220,10 @@ function checkUserAccess() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     // 如果不是在登录页面且用户是游客，则重定向到登录页面
     if (currentPage !== 'login.html' && currentUser.role === UserRole.GUEST) {
-        window.location.href = 'login.html';
+        // 使用绝对路径避免循环重定向
+        if (window.location.href.indexOf('login.html') === -1) {
+            window.location.href = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) + 'login.html';
+        }
         return;
     }
 
