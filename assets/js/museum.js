@@ -804,7 +804,10 @@ function drag(e) {
         const newTranslateY = e.clientY - startY;
         updateDragPosition(newTranslateX, newTranslateY);
     } else if (e.type === 'touchmove') {
-        e.preventDefault(); // 防止页面滚动
+        // 只在图片缩放状态或正在拖动时阻止默认滚动
+        if (currentScale > 1 || isDragging || e.touches.length === 2) {
+            e.preventDefault(); // 防止页面滚动
+        }
         if (e.touches.length === 1 && isDragging) {
             const newTranslateX = e.touches[0].clientX - startX;
             const newTranslateY = e.touches[0].clientY - startY;
