@@ -12,6 +12,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            height: auto;
+            min-height: calc(100vh - 80px);
         }
 
         .photo-group-container {
@@ -20,6 +22,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 3rem;
+            overflow: visible;
         }
 
         .photo-group-grid {
@@ -306,11 +309,15 @@
         @media (max-width: 768px) {
             .museum-container {
                 padding: 1rem;
+                height: auto;
+                min-height: calc(100vh - 60px);
+                overflow-y: visible;
             }
 
             .photo-group-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                overflow-y: visible;
             }
 
             .photo-group {
@@ -725,5 +732,20 @@
     <script src="./assets/js/auth.js"></script>
     <script src="./assets/js/nav.js"></script>
     <script src="./assets/js/museum.js"></script>
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    height: auto;
+    min-height: 100vh;
+}
+main {
+    margin-top: 80px;
+    padding: 2rem;
+    min-height: 100vh;
+    height: auto;
+}
 </body>
 </html>
