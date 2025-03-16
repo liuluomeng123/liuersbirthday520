@@ -11,12 +11,17 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .members-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+            width: 100%;
         }
 
         .member-card {
@@ -26,6 +31,8 @@
             overflow: hidden;
             transition: transform 0.3s ease;
             cursor: pointer;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .member-card:hover {
@@ -130,6 +137,18 @@
                 width: 95%;
                 margin: 1rem;
                 padding: 1.5rem;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
