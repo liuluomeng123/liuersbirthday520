@@ -108,13 +108,28 @@
 
     <script src="./assets/js/auth.js"></script>
     <script>
+        // 如果已经登录且不是游客，则重定向到首页
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedUser = localStorage.getItem('currentUser');
+            if (storedUser) {
+                const user = JSON.parse(storedUser);
+                if (user.role !== UserRole.GUEST) {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
         function handleLogin(event) {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             if (login(username, password)) {
+                // 登录成功，重定向到首页
                 window.location.href = 'index.html';
+            } else {
+                // 登录失败，错误消息已由login函数通过showError显示
+                // 不进行页面跳转
             }
         }
     </script>
