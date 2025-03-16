@@ -114,13 +114,14 @@
         
         /* 音频卡片特殊样式 */
         [data-content="audio"] .media-grid {
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
         
         [data-content="audio"] .media-item {
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-radius: 20px;
+            overflow: hidden;
         }
         
         [data-content="audio"] .media-item:hover {
@@ -137,6 +138,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         [data-content="audio"] .media-content audio {
@@ -149,6 +152,7 @@
             height: auto;
             min-height: 54px;
             padding: 8px;
+            display: block;
         }
         
         [data-content="audio"] .media-content audio:hover {
@@ -217,6 +221,55 @@
         @media (max-width: 768px) {
             .media-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .content-nav {
+                flex-wrap: wrap;
+            }
+            
+            [data-content="audio"] .media-content {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 0;
+                min-height: 70px;
+            }
+            
+            [data-content="audio"] .media-content audio {
+                width: 90%;
+                max-width: 320px;
+                margin: 0 auto;
+                padding: 6px;
+                box-sizing: border-box;
+            }
+            
+            .exhibition-container {
+                padding: 1rem;
+            }
+        }
+        
+        /* 针对更小屏幕的额外优化 */
+        @media (max-width: 480px) {
+            [data-content="audio"] .media-content {
+                padding: 8px 0;
+                min-height: 60px;
+            }
+            
+            [data-content="audio"] .media-content audio {
+                width: 92%;
+                max-width: 280px;
+                padding: 4px;
+            }
+            
+            .nav-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
             }
         }
     </style>
