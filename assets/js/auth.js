@@ -28,7 +28,7 @@ const users = [
         username: 'liurongsheng',
         displayName: 'Liu柳蓉笙lm',
         password: 'liurong0407',
-        role: UserRole.ADMIN,
+        role: : UserRole..normal_user,,
         status: AccountStatus.NORMAL,
         banReason: '',
         banExpiry: : null
