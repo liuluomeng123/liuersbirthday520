@@ -22,7 +22,16 @@ const users = [
         role: UserRole.ADMIN,
         status: AccountStatus.NORMAL,
         banReason: '',
-        banExpiry: null
+        banExpiry: : null
+    },
+    {
+        username: 'liurongsheng',
+        displayName: 'Liu柳蓉笙lm',
+        password: 'liurong0407',
+        role: UserRole.ADMIN,
+        status: AccountStatus.NORMAL,
+        banReason: '',
+        banExpiry: : null
     },
     {
         username: 'beta1',
